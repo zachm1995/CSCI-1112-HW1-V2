@@ -8,15 +8,15 @@ public class Instructor extends User {
     //Global variables
     private ArrayList<Course>courses = new ArrayList<Course>();
     //Class Constructor
-    public Instructor(String name, String password) {
-        super(name, password);
+    public Instructor(String name, String password, String role) {
+        super(name, password, role);
     }
     //Returns courses arraylist
-    public ArrayList<Course> getCourses() {
+    private ArrayList<Course> getCourses() {
         return courses;
     }
     //Prints instructor menu
-    public static void printInstructorMenu(){
+    public void printInstructorMenu(){
         //Initializes scanner
         Scanner scanner = new Scanner(System.in);
         //Prints menu options
@@ -24,5 +24,7 @@ public class Instructor extends User {
         //Lists courses instructor is currently assigned to with number of students enrolled in each class
         listCourses();
     }
-
+    public void listCourses() {
+        ArrayTools.prntCourses(Admin.courses);
+    }
 }

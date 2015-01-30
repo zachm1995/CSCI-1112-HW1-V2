@@ -7,8 +7,8 @@ public class Course {
     //Global variables
     private String title;
     private String crn;
-    private ArrayList<Student> students = new ArrayList<Student>();
-    private ArrayList<Instructor> instructors = new ArrayList<Instructor>();
+    protected ArrayList<Student> students = new ArrayList<Student>();
+    protected ArrayList<Instructor> instructors = new ArrayList<Instructor>();
     //Class Constructor
     public Course(String title, String crn) {
         this.title = title;
@@ -34,5 +34,4 @@ public class Course {
     public int numStudents(){
         return students.size();
     }
-
 }

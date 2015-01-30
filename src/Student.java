@@ -8,19 +8,19 @@ public class Student extends User {
     //Global variables
     private static ArrayList<Course> courses = new ArrayList<Course>();
     //Class constructor
-    public Student(String name, String password) {
-        super(name, password);
+    public Student(String name, String password, String role) {
+        super(name, password, role);
     }
     //Prints list of courses student is enrolled in
-    public static void listCourses(){
-        ArrayTools.prntNumbered(courses);
+    private void listCourses(){
+        ArrayTools.prntCourses(courses);
     }
     //Returns courses student is currently enrolled in
-    public static ArrayList<Course> getCourses() {
+    public ArrayList<Course> getCourses() {
         return courses;
     }
     //Prints student menu
-    public static void printStudentMenu() {
+    public void printStudentMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Student Menu:");
         System.out.println("1. Add Course");
@@ -39,18 +39,24 @@ public class Student extends User {
                 break;
             case 3:
                 //Lists courses student is currently enrolled in
-                Student.listCourses();
+                listCourses();
                 break;
         }
     }
     //Prints student drop menu
-    public static void studentDropMenu() {
+    public void studentDropMenu() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Which course would you like to drop?");
-        ArrayTools.prntNumbered(Student.getCourses());
+        ArrayTools.prntCourses(Admin.courses);
+        int select = scanner.nextInt();
+        Admin.courses.get(select).students.remove(this);
     }
     //Prints course registration process
-    public static void studentRegistrationMenu(){
+    public void studentRegistrationMenu(){
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Which course would you like to register for?");
-        ArrayTools.prntNumbered(Admin.courses);
+        ArrayTools.prntCourses(Admin.courses);
+        int select = scanner.nextInt();
+        Admin.courses.get(select).students.add(this);
     }
 }
