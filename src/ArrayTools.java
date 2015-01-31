@@ -7,9 +7,8 @@ public class ArrayTools {
     //Prints one dimensional array by iteration
     public static void prntoned(ArrayList array)
     {
-        for(int i = 0; i < array.size(); i++)
-        {
-            System.out.print(array.get(i) + "");
+        for (Object anArray : array) {
+            System.out.print(anArray + "");
         }
     }
     //Prints one dimensional array by iteration, adding the index next to each element
@@ -24,14 +23,14 @@ public class ArrayTools {
     {
         for(int i = 0; i < array.size(); i++)
         {
-            System.out.print(i + ". " + (array.get(i)).getName() + " " + array.get(i).getRole() + " ");
+            System.out.print(i + ". " + (array.get(i)).getName() + " " + array.get(i).getLogin());
         }
     }
     public static void prntInstructors(ArrayList<Instructor> array)
     {
         for(int i = 0; i < array.size(); i++)
         {
-            System.out.print(i + ". " + (array.get(i)).getName() + " " + array.get(i).getRole() + " ");
+            System.out.print(i + ". " + (array.get(i)).getName() + " " + array.get(i).getLogin() + " ");
         }
     }
 }

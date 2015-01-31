@@ -8,9 +8,26 @@ public class Student extends User {
     //Global variables
     private static ArrayList<Course> courses = new ArrayList<Course>();
     //Class constructor
-    public Student(String name, String password, String role) {
-        super(name, password, role);
+
+    public Student() {
     }
+
+    public Student(String login) {
+        super(login);
+    }
+
+    public Student(String login, String password) {
+        super(login, password);
+    }
+
+    public Student(String login, String password, String name) {
+        super(login, password, name);
+    }
+
+    public Student(String login, String password, String role, String name) {
+        super(login, password, role, name);
+    }
+
     //Prints list of courses student is enrolled in
     private void listCourses(){
         ArrayTools.prntCourses(courses);
@@ -26,9 +43,9 @@ public class Student extends User {
         System.out.println("1. Add Course");
         System.out.println("2. Drop Course");
         System.out.println("3. List Courses");
+        System.out.println("4. Logout");
         //Choice selection
-        switch(scanner.nextInt())
-        {
+        switch (scanner.nextInt()) {
             case 1:
                 //Brings up dialog to add a course object to student object
                 studentRegistrationMenu();
@@ -41,9 +58,14 @@ public class Student extends User {
                 //Lists courses student is currently enrolled in
                 listCourses();
                 break;
+            case 4:
+                //Logout
+                Main.printMenu();
         }
     }
-    //Prints student drop menu
+
+        //Prints student drop menu
+
     public void studentDropMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which course would you like to drop?");
@@ -51,8 +73,9 @@ public class Student extends User {
         int select = scanner.nextInt();
         Admin.courses.get(select).students.remove(this);
     }
+
     //Prints course registration process
-    public void studentRegistrationMenu(){
+    public void studentRegistrationMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Which course would you like to register for?");
         ArrayTools.prntCourses(Admin.courses);
